@@ -1,18 +1,25 @@
 package com.beugnet;
 
 public class Tile {
+    private Coordinate center;
     private Integer value;
     private boolean hasLinkLeft;
     private boolean hasLinkRight;
     private boolean hasLinkDown;
     private boolean hasLinkUp;
 
-    public Tile(Integer value, boolean hasLinkLeft, boolean hasLinkRight, boolean hasLinkDown, boolean hasLinkUp) {
+    public Tile(Coordinate center, Integer value, boolean hasLinkLeft, boolean hasLinkRight, boolean hasLinkDown, boolean hasLinkUp) {
+        this.center = center;
+
         this.value = value;
         this.hasLinkLeft = hasLinkLeft;
         this.hasLinkRight = hasLinkRight;
         this.hasLinkDown = hasLinkDown;
         this.hasLinkUp = hasLinkUp;
+    }
+
+    public Coordinate getCenter() {
+        return center;
     }
 
     @Override
@@ -44,25 +51,26 @@ public class Tile {
         return value;
     }
 
-    public boolean isHasLinkLeft() {
+    public boolean hasLinkLeft() {
         return hasLinkLeft;
     }
 
-    public boolean isHasLinkRight() {
+    public boolean hasLinkRight() {
         return hasLinkRight;
     }
 
-    public boolean isHasLinkDown() {
+    public boolean hasLinkDown() {
         return hasLinkDown;
     }
 
-    public boolean isHasLinkUp() {
+    public boolean hasLinkUp() {
         return hasLinkUp;
     }
 
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
+        output.append("{").append(center.getX()).append(";").append(center.getY()).append("} ");
         output.append(value);
         if (hasLinkLeft)
             output.append(" LEFT");
